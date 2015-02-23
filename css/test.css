@@ -1,0 +1,10 @@
+@import url(reset.css);
+
+body {
+	font-family: Arial;
+}
+
+.width {
+	width: 315px;
+	margin: 0 auto;
+}
