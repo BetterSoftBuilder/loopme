@@ -29,3 +29,42 @@ body {
     height: 10%;
     background: linear-gradient(0deg, rgba(255,255,255,0) -100px, rgba(0,0,0,1) 50%);
 }
+
+.pearent_central_cont {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 0;
+}
+
+.pearent_central_cont:before {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    content: '';
+}
+
+.child_central_cont {
+    display: inline-block;
+    white-space: normal;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.ad {
+    display: block;
+    border: none;
+}
+
+.download {
+    color: #fff;
+    text-decoration: none;
+    background: rgb(212,75,56);
+    padding: .7em 1.5em;
+    outline: none;
+}
