@@ -62,7 +62,7 @@ body {
 }
 
 .download {
-    height: 40px;
+    height: 50px;
     color: #FFFFFF;
     text-decoration: none;
     background: rgb(212,75,56);
@@ -70,13 +70,19 @@ body {
     outline: none;
     width: 100%;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
-.img_cont {    
-    padding-bottom: 20px;
+.img_cont {
+    background: -webkit-radial-gradient(50% 0%, 50% 55px, #aaa 90%, transparent 100%);
+    -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white));
 }
 
 .main_img {
     border-radius: 10px;
+}
+
+.btn_cont {
+    background: -webkit-radial-gradient(50% 0%, 50% 55px, #aaa 90%, transparent 100%);
+    padding-top: 20px;
 }
