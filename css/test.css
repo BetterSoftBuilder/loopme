@@ -107,3 +107,32 @@ body {
     height: 100%;
     width: 100%;
 }
+
+.close {
+    float: right;
+    color: #fff;
+    border: 1px solid #FFFFFF;
+    border-radius: 22px;
+    background: rgb(212,75,56);
+    font-size: 50px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 20px 4px 17px 4px;
+}
+
+.close:before {
+    content: "×";
+}
+
+.close_cont {
+    width: 10%;
+}
+
+.company {
+    width: 90%;
+}
+
+.entire_width {
+    width: 100%;
+}

@@ -1,6 +1,12 @@
 var ad = (function() {
         "use strict";
-	return {
+	
+        function _close() {
+            var close = document.getElementById('wrap');
+            close.parentNode.removeChild(close);
+        }
+        
+        return {
 		init:   function() {
 
 			    },
@@ -20,26 +26,28 @@ var ad = (function() {
                                                var successLoad = new XMLHttpRequest();
                                                successLoad.onload = function() {console.log('ad');};
                                                successLoad.open("GET", adsData.session.beacons.inbox_open, true);
-                                               //successLoad.send();
+                                               successLoad.send();
                                            };
                                            document.getElementsByClassName('like')[0].onclick = function() {
                                                var like = new XMLHttpRequest();
                                                like.open("GET", adsData.ads[0].beacons.ad_like, true);
                                                like.send();
                                            };
-                                           document.getElementsByClassName('dislike')[0].onclick = function() {
-                                               //document.getElementsByClassName('button').className  = "button_click";
-                                           };
                                            document.getElementsByClassName('stop')[0].onclick = function() {
                                                var stop = new XMLHttpRequest();
                                                stop.open("GET", adsData.ads[0].beacons.ad_hide, true);
                                                stop.send();
+                                               _close();
                                            };
                                            document.getElementsByClassName('share')[0].onclick = function() {
                                                var share = new XMLHttpRequest();
                                                share.open("GET", adsData.ads[0].beacons.ad_share, true);
                                                share.send();
                                            };
+                                           document.getElementsByClassName('buttons_list')[0].addEventListener('click', function (event) {
+                                               event.target.parentNode.className += " button_click";
+                                           });                                          
+                                           document.getElementsByClassName('close')[0].addEventListener('click', _close);                                          
                                        }
                                        else {
                                            console.log(this.responseText);
