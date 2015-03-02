@@ -12,6 +12,8 @@ var ad = (function() {
 			    },
 
 		getData:   function() {
+                                //document.getElementById('wrap').style.width = window.screen.availWidth + 'px';
+                                //document.getElementById('wrap').style.height = window.screen.availHeight + 'px';
                                 var requestAd = new XMLHttpRequest();
                                 requestAd.onload = function() {
                                     if (this.readyState == 4 ) {

@@ -1,5 +1,7 @@
 @import url(reset.css);
 
+@media screen and (orientation: portrait) {
+
 body {
     font-family: Arial;
 }
@@ -74,12 +76,14 @@ body {
 }
 
 .img_cont {
-    background: -webkit-radial-gradient(50% 0%, 50% 55px, #aaa 90%, transparent 100%);
     -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white));
 }
 
 .main_img {
     border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    width: 100%;
 }
 
 .btn_cont {
@@ -135,4 +139,11 @@ body {
 
 .entire_width {
     width: 100%;
+    margin: 0 auto;
+}
+
+}
+
+@media screen and (orientation: landscape) {
+    
 }
