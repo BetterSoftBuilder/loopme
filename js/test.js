@@ -1,11 +1,11 @@
 var ad = (function() {
         "use strict";
-	
+
         function _close() {
             var close = document.getElementById('wrap');
             close.parentNode.removeChild(close);
         }
-        
+
         return {
 		init:   function() {
 
@@ -45,9 +45,13 @@ var ad = (function() {
                                                share.send();
                                            };
                                            document.getElementsByClassName('buttons_list')[0].addEventListener('click', function (event) {
-                                               event.target.parentNode.className += " button_click";
-                                           });                                          
-                                           document.getElementsByClassName('close')[0].addEventListener('click', _close);                                          
+                                               if (event.target.tagName == 'A') {
+                                                   event.target.parentNode.className += " button_click";
+                                               } else {
+                                                   event.target.className += " button_click";
+                                               }
+                                           });
+                                           document.getElementsByClassName('close')[0].addEventListener('click', _close);
                                        }
                                        else {
                                            console.log(this.responseText);
