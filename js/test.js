@@ -30,18 +30,18 @@ var ad = (function() {
                                                successLoad.open("GET", adsData.session.beacons.inbox_open, true);
                                                successLoad.send();
                                            };
-                                           document.getElementsByClassName('like')[0].onclick = function() {
+                                           document.getElementsByClassName('like')[0].parentNode.onclick = function() {
                                                var like = new XMLHttpRequest();
                                                like.open("GET", adsData.ads[0].beacons.ad_like, true);
                                                like.send();
                                            };
-                                           document.getElementsByClassName('stop')[0].onclick = function() {
+                                           document.getElementsByClassName('stop')[0].parentNode.onclick = function() {
                                                var stop = new XMLHttpRequest();
                                                stop.open("GET", adsData.ads[0].beacons.ad_hide, true);
                                                stop.send();
                                                _close();
                                            };
-                                           document.getElementsByClassName('share')[0].onclick = function() {
+                                           document.getElementsByClassName('share')[0].parentNode.onclick = function() {
                                                var share = new XMLHttpRequest();
                                                share.open("GET", adsData.ads[0].beacons.ad_share, true);
                                                share.send();
