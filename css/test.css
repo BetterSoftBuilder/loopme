@@ -111,44 +111,60 @@ body{
     margin: 0 auto;
 }
 
-@media screen and (orientation: portrait) {
-
 #wrap {
     background: radial-gradient(circle, #000, transparent);
-    height: 720px;
-    width: 480px;
     overflow: hidden;
 }
 
 .info {
     height: 10%;
     min-height: 60px;
+}
+
+.main {
+    min-height: 200px;
+    transition: all .3s ease-out;
+}
+
+.buttons {
+    height: 10%;
+    position: absolute;
+    left: 0;
+}
+
+.button {
+    position: relative;
+    transition: all .3s ease-out;
+    font-size: 20px;
+}
+
+@media screen and (orientation: portrait) {
+
+#wrap {
+    height: 720px;
+    width: 480px;
+}
+
+.info {
     background: linear-gradient(0deg, rgba(255,255,255,0) -50px, rgba(0,0,0,1) 50%);
 }
 
 .main {
     height: 80%;
-    min-height: 200px;
 }
 
 .buttons {
-    height: 10%;
+    color: white;
     min-height: 60px;
     background: linear-gradient(180deg, rgba(255,255,255,0) -100px, rgba(0,0,0,1) 50%);
-    position: absolute;
     width: 100%;
     bottom: 0;
-    left: 0;
 }
 
 .button {
     float: left;
-    color: white;
-    position: relative;
     width: 25%;
     height: 100%;
-    transition: all .3s ease-out;
-    font-size: 20px;
 }
 
 }
@@ -156,41 +172,31 @@ body{
 @media screen and (orientation: landscape) {
     
 #wrap {
-    background: radial-gradient(circle, #000, transparent);
     height: 480px;
     width: 720px;
-    overflow: hidden;
 }
 
 .info {
-    height: 10%;
-    min-height: 60px;
+    background: transparent;
 }
 
 .main {
     height: 90%;
-    min-height: 200px;
     width: 90%;
     float: right;
 }
 
 .buttons {
-    height: 10%;
+    color: white;
     min-width: 70px;
     background: linear-gradient(270deg, rgba(255,255,255,0) -100px, rgba(0,0,0,1) 50%);
-    position: absolute;
     width: 10%;
     height: 100%;
-    left: 0;
     top: 0;
 }
 
 .button {
-    color: white;
-    position: relative;
     height: 25%;
-    transition: all .3s ease-out;
-    font-size: 20px;
 }
     
 }
