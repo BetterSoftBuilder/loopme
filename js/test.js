@@ -34,17 +34,23 @@ var ad = (function() {
                                                var like = new XMLHttpRequest();
                                                like.open("GET", adsData.ads[0].beacons.ad_like, true);
                                                like.send();
+                                               localStorage.like = !localStorage.like ? 1 : (parseInt(localStorage.like) + 1);
+                                           };
+                                           document.getElementsByClassName('dislike')[0].parentNode.onclick = function() {
+                                               localStorage.dislike = !localStorage.dislike ? 1 : (parseInt(localStorage.dislike) + 1);
                                            };
                                            document.getElementsByClassName('stop')[0].parentNode.onclick = function() {
                                                var stop = new XMLHttpRequest();
                                                stop.open("GET", adsData.ads[0].beacons.ad_hide, true);
                                                stop.send();
+                                               localStorage.stop = !localStorage.stop ? 1 : (parseInt(localStorage.stop) + 1);
                                                _close();
                                            };
                                            document.getElementsByClassName('share')[0].parentNode.onclick = function() {
                                                var share = new XMLHttpRequest();
                                                share.open("GET", adsData.ads[0].beacons.ad_share, true);
                                                share.send();
+                                               localStorage.share = !localStorage.share ? 1 : (parseInt(localStorage.share) + 1);
                                            };
                                            document.getElementsByClassName('buttons_list')[0].addEventListener('click', function (event) {
                                                if (event.target.tagName == 'A') {

@@ -54,7 +54,7 @@ body{
 }
 
 .img_cont {
-    -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white));
+    -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(white));
 }
 
 .main_img {
@@ -66,7 +66,7 @@ body{
 
 .btn_cont {
     background: -webkit-radial-gradient(50% 0%, 50% 55px, #aaa 90%, transparent 100%);
-    padding-top: 20px;
+    padding-top: 25px;
 }
 
 
