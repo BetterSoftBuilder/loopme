@@ -21,12 +21,11 @@ var ad = (function() {
                                            var adsData = JSON.parse(this.responseText);
                                            var ad = document.getElementsByClassName('main_img')[0];
                                            ad.src = adsData.ads[0].data.image_url;
-                                           ad.onclick = function() {
+                                           document.getElementsByClassName('ad')[0].onclick = function() {
                                                 document.location.href = adsData.ads[0].data.click_url;
-                                            };
+                                           };
                                            ad.onload = function () {
                                                var successLoad = new XMLHttpRequest();
-                                               successLoad.onload = function() {console.log('ad');};
                                                successLoad.open("GET", adsData.session.beacons.inbox_open, true);
                                                successLoad.send();
                                            };
