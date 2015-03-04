@@ -54,7 +54,7 @@ body{
 }
 
 .img_cont {
-    -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(white));
+    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.6)));
     position: relative;
     z-index: 1;
 }
@@ -67,7 +67,6 @@ body{
 }
 
 .btn_cont {
-    /* background: -webkit-radial-gradient(50% 0%, 50% 55px, #aaa 90%, transparent 100%); */
     padding-top: 25px;
     position: relative;
     z-index: 2;
@@ -152,7 +151,6 @@ body{
 .button {
     position: relative;
     transition: all .3s ease-out;
-    font-size: 20px;
 }
 
 @media screen and (orientation: portrait) {
@@ -178,6 +176,7 @@ body{
     float: left;
     width: 25%;
     height: 100%;
+    font-size: 40px;
 }
 
 }
@@ -205,6 +204,7 @@ body{
 
 .button {
     height: 25%;
+    font-size: 20px;
 }
     
 }
