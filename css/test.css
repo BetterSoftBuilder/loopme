@@ -42,7 +42,7 @@ body{
 }
 
 .download {
-    height: 50px;
+    height: 100px;
     color: #FFFFFF;
     text-decoration: none;
     background: rgb(212,75,56);
@@ -50,11 +50,13 @@ body{
     outline: none;
     width: 100%;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 40px;
 }
 
 .img_cont {
     -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(white));
+    position: relative;
+    z-index: 1;
 }
 
 .main_img {
@@ -65,8 +67,10 @@ body{
 }
 
 .btn_cont {
-    background: -webkit-radial-gradient(50% 0%, 50% 55px, #aaa 90%, transparent 100%);
+    /* background: -webkit-radial-gradient(50% 0%, 50% 55px, #aaa 90%, transparent 100%); */
     padding-top: 25px;
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -85,13 +89,13 @@ body{
     float: right;
     color: #fff;
     border: 1px solid #FFFFFF;
-    border-radius: 22px;
+    border-radius: 32px;
     background: rgb(212,75,56);
-    font-size: 50px;
+    font-size: 80px;
     font-weight: bold;
     display: inline-block;
     line-height: 0px;
-    padding: 20px 4px 17px 4px;
+    padding: 30px 8px 30px 6px;
 }
 
 .close:before {
@@ -107,7 +111,7 @@ body{
 }
 
 .entire_width {
-    width: 100%;
+    width: 96%;
     margin: 0 auto;
 }
 
@@ -123,29 +127,26 @@ body{
 
 .info {
     height: 10%;
-    min-height: 60px;
+    min-height: 90px;
     position: absolute;
     left: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
 }
 
 .main {
     min-height: 200px;
     transition: all .3s ease-out;
     position: absolute;
-    left: 0;
     width: 100%;
-    background: radial-gradient(circle, #000, transparent);
     z-index: 1;
 }
 
 .buttons {
     height: 10%;
-    min-height: 60px;
     position: absolute;
     left: 0;
-    z-index: 2;
+    z-index: 3;
 }
 
 .button {
@@ -162,11 +163,12 @@ body{
 
 .main {
     height: 100%;
+    left: 0;
 }
 
 .buttons {
     color: white;
-    min-height: 60px;
+    min-height: 90px;
     background: linear-gradient(180deg, rgba(255,255,255,0) -100px, rgba(0,0,0,1) 50%);
     width: 100%;
     bottom: 0;
@@ -187,9 +189,9 @@ body{
 }
 
 .main {
-    height: 90%;
+    height: 100%;
     width: 90%;
-    float: right;
+    right: 0;
 }
 
 .buttons {
