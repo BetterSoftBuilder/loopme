@@ -63,7 +63,7 @@ var ad = (function() {
                                        }
                                     }
                                 };
-                                requestAd.open("GET", "json/api.json", true);
+                                requestAd.open("GET", "http://loopme.me/api/v2/ads?p=1&vt=3syja4w0tw&ak=6b1dcb4bef&pp=1", true);
                                 requestAd.send();
 			    }
 	};
