@@ -6,24 +6,6 @@ var ad = (function() {
             close.parentNode.removeChild(close);
         }
 
-        function _size() {
-            var wrap = document.getElementById('wrap');
-            wrap.style.width = window.screen.availWidth + 'px';
-            wrap.style.height = window.screen.availHeight + 'px';
-        }
-
-        function _screenSize() {
-            _size();
-            var mq = window.matchMedia('screen and (orientation: portrait)');
-            mq.addListener(function(changed) {
-                if(changed.matches) {
-                    _size();
-                } else {
-                    _size();
-                }
-            });
-        }
-
         function _events(adsData) {
             var ad = document.getElementsByClassName('main_img')[0];
             ad.src = adsData.ads[0].data.image_url;
@@ -86,8 +68,9 @@ var ad = (function() {
 
         return {
 		init:   function() {
-                                //_screenSize();
                                 _getData();
 			    }
 	};
 }());
+
+ad.init();
