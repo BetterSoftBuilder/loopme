@@ -7,12 +7,12 @@ var ad = (function() {
         }
 
         function _events(adsData) {
-            var ad = document.getElementsByClassName('main_img')[0];
-            ad.src = adsData.ads[0].data.image_url;
+            var ads = document.getElementsByClassName('main_img')[0];
+            ads.src = adsData.ads[0].data.image_url;
             document.getElementsByClassName('ad')[0].onclick = function() {
                  document.location.href = adsData.ads[0].data.click_url;
             };
-            ad.onload = function () {
+            ads.onload = function () {
                 var successLoad = new XMLHttpRequest();
                 successLoad.open("GET", adsData.session.beacons.inbox_open, true);
                 successLoad.send();
@@ -49,28 +49,24 @@ var ad = (function() {
             document.getElementsByClassName('close')[0].onclick =  _close;
         }
 
-        function _getData() {
-            var requestAd = new XMLHttpRequest();
-            requestAd.onload = function() {
-                if (this.readyState == 4 ) {
-                   if(this.status == 200){
-                       var data = JSON.parse(this.responseText);
-                       _events(data);
-                   }
-                   else {
-                       console.log(this.responseText);
-                   }
-                }
-            };
-            requestAd.open("GET", "json/api.json", true);
-            requestAd.send();
-        }
-
         return {
-		init:   function() {
-                                _getData();
+		getData:    function() {
+                                var requestAd = new XMLHttpRequest();
+                                requestAd.onload = function() {
+                                    if (this.readyState == 4 ) {
+                                       if(this.status == 200){
+                                           var data = JSON.parse(this.responseText);
+                                           _events(data);
+                                       }
+                                       else {
+                                           console.log(this.responseText);
+                                       }
+                                    }
+                                };
+                                requestAd.open("GET", "json/api.json", true);
+                                requestAd.send();
 			    }
 	};
 }());
 
-ad.init();
+ad.getData();
