@@ -1,72 +1,66 @@
 var ad = (function() {
         "use strict";
 
-        function _close() {
+        function byClass(node) {
+            return document.getElementsByClassName(node)[0];
+        }
+
+        function close() {
             var close = document.getElementById('wrap');
             close.parentNode.removeChild(close);
         }
 
-        function _events(adsData) {
-            var ads = document.getElementsByClassName('main_img')[0];
+        function getData(url, callback) {
+            var req = new XMLHttpRequest();
+            req.open("GET", url, true);
+            req.addEventListener("load", function() {
+              if ((req.status < 400) && callback)
+                callback(JSON.parse(this.responseText));
+              else
+                console.log("Request failed: " + req.statusText);
+            });
+            req.send(null);
+        }
+
+        function socialSend(button, adsData) {
+            for (var key in adsData.ads[0].beacons) {
+                if (key==button) {
+                    var url = adsData.ads[0].beacons[key];
+                    break;
+                }
+            }
+            if (url) {
+                getData(url);
+                (button=='ad_hide') && close();
+            }
+        }
+
+        function events(adsData) {
+
+            var ads = byClass('main_img');
             ads.src = adsData.ads[0].data.image_url;
-            document.getElementsByClassName('ad')[0].onclick = function() {
+            ads.onload = function () {
+                getData(adsData.session.beacons.inbox_open);
+            };
+            byClass('ad').onclick = function() {
                  document.location.href = adsData.ads[0].data.click_url;
             };
-            ads.onload = function () {
-                var successLoad = new XMLHttpRequest();
-                successLoad.open("GET", adsData.session.beacons.inbox_open, true);
-                successLoad.send();
+
+            byClass('buttons_list').onclick = function(event) {
+                //localStorage.share = !localStorage.share ? 1 : (parseInt(localStorage.share) + 1);
+                var button = event.target.getAttribute('data-button');
+                event.target.className += " button_click";
+                socialSend(button, adsData);
             };
-            document.getElementsByClassName('like')[0].parentNode.onclick = function() {
-                var like = new XMLHttpRequest();
-                like.open("GET", adsData.ads[0].beacons.ad_like, true);
-                like.send();
-                localStorage.like = !localStorage.like ? 1 : (parseInt(localStorage.like) + 1);
-            };
-            document.getElementsByClassName('dislike')[0].parentNode.onclick = function() {
-                localStorage.dislike = !localStorage.dislike ? 1 : (parseInt(localStorage.dislike) + 1);
-            };
-            document.getElementsByClassName('stop')[0].parentNode.onclick = function() {
-                var stop = new XMLHttpRequest();
-                stop.open("GET", adsData.ads[0].beacons.ad_hide, true);
-                stop.send();
-                localStorage.stop = !localStorage.stop ? 1 : (parseInt(localStorage.stop) + 1);
-                _close();
-            };
-            document.getElementsByClassName('share')[0].parentNode.onclick = function() {
-                var share = new XMLHttpRequest();
-                share.open("GET", adsData.ads[0].beacons.ad_share, true);
-                share.send();
-                localStorage.share = !localStorage.share ? 1 : (parseInt(localStorage.share) + 1);
-            };
-            document.getElementsByClassName('buttons_list')[0].onclick = function(event) {
-                if (event.target.tagName == 'A') {
-                    event.target.parentNode.className += " button_click";
-                } else {
-                    event.target.className += " button_click";
-                }
-            };
-            document.getElementsByClassName('close')[0].onclick =  _close;
+            byClass('close').onclick =  close;
         }
 
         return {
-		getData:    function() {
-                                var requestAd = new XMLHttpRequest();
-                                requestAd.onload = function() {
-                                    if (this.readyState == 4 ) {
-                                       if(this.status == 200){
-                                           var data = JSON.parse(this.responseText);
-                                           _events(data);
-                                       }
-                                       else {
-                                           console.log(this.responseText);
-                                       }
-                                    }
-                                };
-                                requestAd.open("GET", "json/api.json", true);
-                                requestAd.send();
-			    }
+		init:   function() {
+                            getData("json/api.json", events);
+                            //something else
+			}
 	};
 }());
 
-ad.getData();
+ad.init();
