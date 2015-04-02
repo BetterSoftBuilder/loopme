@@ -35,8 +35,18 @@ var ad = (function() {
             }
         }
 
-        function events(adsData) {
+        function socilStorage(button) {
+            var social = {};
+            localStorage.getItem('social') || localStorage.setItem('social', JSON.stringify(social));
+            var social = JSON.parse(localStorage.getItem('social'));
+            (!social.hasOwnProperty(button)) && (social[button] = 0);
+            for (var key in social) {
+                (key==button) && (social[key] = parseInt(social[key]) + 1);
+            }
+            localStorage.setItem('social', JSON.stringify(social));
+        }
 
+        function events(adsData) {
             var ads = byClass('main_img');
             ads.src = adsData.ads[0].data.image_url;
             ads.onload = function () {
@@ -47,10 +57,10 @@ var ad = (function() {
             };
 
             byClass('buttons_list').onclick = function(event) {
-                //localStorage.share = !localStorage.share ? 1 : (parseInt(localStorage.share) + 1);
                 var button = event.target.getAttribute('data-button');
                 event.target.className += " button_click";
                 socialSend(button, adsData);
+                socilStorage(button);
             };
             byClass('close').onclick =  close;
         }
